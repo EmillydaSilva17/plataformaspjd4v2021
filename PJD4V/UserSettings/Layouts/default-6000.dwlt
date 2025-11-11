@@ -354,8 +354,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 288
-    y: 79
+    x: 289
+    y: 24
     width: 1043
     height: 529
   m_SerializedDataModeController:
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 287
     height: 529
   m_SerializedDataModeController:
@@ -1025,23 +1025,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3e860000
-      m_LastClickedID: 34366
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: 0ef3ffff6ef4ffffa6f4ffffb0f4fffff6f5ffff0cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: MovingPlatform
-        m_OriginalName: MovingPlatform
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -2906
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 8}
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 634
+    y: 579
     width: 1332
     height: 352
   m_SerializedDataModeController:
@@ -1410,7 +1410,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 68}
     m_SelectedIDs: ec840000
     m_LastClickedID: 34028
-    m_ExpandedIDs: 00000000aa830000e484000006b9000000ca9a3b
+    m_ExpandedIDs: 00000000aa830000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1593,8 +1593,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1333
-    y: 79
+    x: 1
+    y: 24
     width: 586
     height: 381
   m_SerializedDataModeController:
@@ -1642,8 +1642,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "UnityEditor.Tilemaps.GridPaintPaletteWindow\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1333
-    y: 486
+    x: 1
+    y: 431
     width: 586
     height: 500
   m_SerializedDataModeController:
