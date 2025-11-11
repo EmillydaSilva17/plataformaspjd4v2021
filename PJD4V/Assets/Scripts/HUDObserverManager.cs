@@ -53,4 +53,11 @@ public static class HUDObserverManager
     {
         ONKeyChanged?.Invoke(key);
     }
+    
+    public static event Action<int> ONActChanged;
+    
+    public static void ActChanged(int act)
+    {
+        ONActChanged?.Invoke(act);
+    }
 }

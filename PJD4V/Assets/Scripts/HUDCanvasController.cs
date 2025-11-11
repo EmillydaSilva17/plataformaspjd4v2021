@@ -10,6 +10,7 @@ public class HUDCanvasController : MonoBehaviour
     public GameObject livesObject;
     public GameObject energyBarObject;
     public GameObject coinsObject;
+    public GameObject timerObject;
     
     private void OnEnable()
     {
@@ -39,5 +40,6 @@ public class HUDCanvasController : MonoBehaviour
         livesObject.SetActive(obj);
         energyBarObject.SetActive(obj);
         coinsObject.SetActive(obj);
+        timerObject.SetActive(obj);
     }
 }

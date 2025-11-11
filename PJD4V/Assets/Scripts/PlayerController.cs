@@ -447,6 +447,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         _animator.SetBool("Active", _active);
         _animator.Play("Victory");
 
+        HUDObserverManager.ActChanged(4);
+
         HUDObserverManager.PlayerVictory(true);
         jetEffect.SetActive(false);
     }

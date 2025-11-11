@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
         HUDObserverManager.LivesChangedChannel(Lives);
         Lives = 3;
         HUDObserverManager.LivesChangedChannel(Lives);
+        HUDObserverManager.ActChanged(1);
     }
 
     public void ProcessCheckpoint(GameObject otherGameObject)
