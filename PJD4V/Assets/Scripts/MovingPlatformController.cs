@@ -41,7 +41,7 @@ public class MovingPlatformController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MovePlatform();
     }
@@ -50,7 +50,7 @@ public class MovingPlatformController : MonoBehaviour
     {
         if (!_isReturning)
         {
-            if (Vector2.Distance(transform.position, _initialPosition + _moveTarget) < 1f)
+            if (Vector2.Distance(transform.position, _initialPosition + _moveTarget) < 0.1f)
             {
                 _isReturning = true;
                 _currentMoveDirection = (_initialPosition - (Vector2) transform.position).normalized;
@@ -58,7 +58,7 @@ public class MovingPlatformController : MonoBehaviour
         }
         else
         {
-            if (Vector2.Distance(transform.position, _initialPosition) < 1f)
+            if (Vector2.Distance(transform.position, _initialPosition) < 0.1f)
             {
                 _isReturning = false;
                 _currentMoveDirection = (_initialPosition + _moveTarget - (Vector2) transform.position).normalized;
@@ -74,7 +74,7 @@ public class MovingPlatformController : MonoBehaviour
                 transform.localScale = new Vector3(_originalLocalScaleX, transform.localScale.y, transform.localScale.z);
         }
 
-        transform.position += (Vector3)_currentMoveDirection * moveSpeed * Time.deltaTime;
+        transform.position += (Vector3)_currentMoveDirection * (moveSpeed * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -95,13 +95,27 @@ public class MovingPlatformController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (useTransform)
+        if (Application.isPlaying)
         {
-            Debug.DrawLine(transform.position, transform.position + moveDestination.localPosition, Color.yellow);
+            if (useTransform)
+            {
+                Debug.DrawLine(_initialPosition, (Vector3)_initialPosition + moveDestination.localPosition, Color.yellow);
+            }
+            else
+            {
+                Debug.DrawLine(_initialPosition, (Vector3)_initialPosition + (Vector3)movePosition, Color.red);
+            }
         }
         else
         {
-            Debug.DrawLine(transform.position, transform.position + (Vector3)movePosition, Color.red);
+            if (useTransform)
+            {
+                Debug.DrawLine(transform.position, transform.position + moveDestination.localPosition, Color.yellow);
+            }
+            else
+            {
+                Debug.DrawLine(transform.position, transform.position + (Vector3)movePosition, Color.red);
+            }
         }
         
     }
