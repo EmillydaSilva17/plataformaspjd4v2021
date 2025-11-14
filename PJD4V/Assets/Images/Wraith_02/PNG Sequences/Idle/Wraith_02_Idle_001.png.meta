@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_02_Idle_001_0: 2185905988379004971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_03_Taunt_017_0: -1967474809062343469
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

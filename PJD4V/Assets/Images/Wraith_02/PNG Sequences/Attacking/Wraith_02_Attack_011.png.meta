@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_02_Attack_011_0: -6267321741990066759
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

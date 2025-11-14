@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_02_Idle Blinking_000_0: 3582042735498768720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

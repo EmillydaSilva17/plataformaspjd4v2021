@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_01_Hurt_011_0: 1154781455202042852
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_03_Moving Forward_008_0: 4641815268862425574
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

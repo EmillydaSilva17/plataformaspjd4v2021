@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_01_Casting Spells_010_0: -3862606134290431897
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

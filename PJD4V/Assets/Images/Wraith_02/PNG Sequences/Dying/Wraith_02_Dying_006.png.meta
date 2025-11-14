@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wraith_02_Dying_006_0: 2410870532380253857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
