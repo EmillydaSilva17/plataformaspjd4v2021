@@ -13,6 +13,7 @@ public class KeyDoorController : MonoBehaviour
         
         GetComponent<Animator>().Play("Opening");
         GetComponent<AudioSource>().Play();
+        GetComponentsInChildren<BoxCollider2D>()[1].enabled = false;
         _isOpen = true;
         return true;
 

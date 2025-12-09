@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float jumpForce;
 
     public float jumpTime;
+    
+    public float jumpBufferTime;
+    
+    public float coyoteTime;
+    public float coyoteCooldown;
 
     public float jetpackForce;
 
@@ -82,6 +87,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Animator _animator;
 
     private float _currentEnergy;
+    
+    private float _jumpBufferCounter;
+    
+    private float _coyoteTimeCounter;
+    private float _coyoteCooldownCounter;
 
     private bool _canJetpack;
 
@@ -184,7 +194,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 foreach (RaycastHit2D hit in hits)
                 {
                     if (Vector2.Angle(hit.normal, Vector2.up) < 20 &&
-                        hit.point.y < transform.position.y - 1.2f)
+                        hit.point.y < transform.position.y - 1f)
                     {
                         _isGrounded = true;
                         
@@ -199,7 +209,42 @@ public class PlayerController : MonoBehaviour, IDamageable
                 }
             }
             
-            if(!_canDoubleJump && _isGrounded) _canDoubleJump = _isGrounded;
+            //if(!_canDoubleJump && _isGrounded) _canDoubleJump = _isGrounded;
+            
+            if (_isGrounded)
+            {
+                if (_coyoteCooldownCounter <= 0f)
+                {
+                    _coyoteTimeCounter = coyoteTime;
+                }
+                if(!_canDoubleJump) _canDoubleJump = _isGrounded;
+            }
+            else
+            {
+                _coyoteTimeCounter = Mathf.Max(0f, _coyoteTimeCounter - Time.deltaTime);
+            }
+            
+            if (_coyoteCooldownCounter > 0f)
+            {
+                _coyoteCooldownCounter = Mathf.Max(0f, _coyoteCooldownCounter - Time.deltaTime);
+            }
+            
+            // decai o buffer de pulo
+            if (_jumpBufferCounter > 0f)
+            {
+                _jumpBufferCounter = Mathf.Max(0f, _jumpBufferCounter - Time.deltaTime);
+            }
+
+            // se houver jump buffered e agora for possível pular, executa o pulo
+            if (_jumpBufferCounter > 0f && (_isGrounded || _coyoteTimeCounter > 0f))
+            {
+                _doJump = true;
+                _startJumpTime = Time.time;
+                _coyoteTimeCounter = 0f; // consome coyote
+                _jumpBufferCounter = 0f; // consome buffer
+                _coyoteCooldownCounter = coyoteCooldown;
+                normalSFXSource.PlayOneShot(playerSFX[0]);
+            }
             
             AnimationUpdate();
             
@@ -261,23 +306,23 @@ public class PlayerController : MonoBehaviour, IDamageable
             {
                 if (obj.started)
                 {
-                    if(_isGrounded)
+                    if (_isGrounded || _coyoteTimeCounter > 0f)
                     {
                         _doJump = true;
                         _startJumpTime = Time.time;
+                        _coyoteTimeCounter = 0f; // zera coyote ao iniciar o pulo
+                        _coyoteCooldownCounter = coyoteCooldown; // impede recarga imediata
                         normalSFXSource.PlayOneShot(playerSFX[0]);
                     }
                     else
                     {
-                        
-                        
                         if (_canDoubleJump)
                         {
                             _doJump = true;
                             _startJumpTime = Time.time;
                             _canDoubleJump = false;
+                            _coyoteCooldownCounter = coyoteCooldown; // impede recarga imediata
                             normalSFXSource.PlayOneShot(playerSFX[0]);
-                            
                             _canJetpack = true;
                         } else if (_canJetpack)
                         {
@@ -287,13 +332,18 @@ public class PlayerController : MonoBehaviour, IDamageable
                             jetEffect.SetActive(true);
                             jetpackSFXSource.Play();
                         }
+                        else
+                        {
+                            // armazena o input para ser executado se o jogador pousar em breve
+                            _jumpBufferCounter = jumpBufferTime;
+                        }
                     }
                 }
     
                 if (obj.canceled)
                 {
                     _doJump = false;
-
+                    _jumpBufferCounter = 0f; // zera buffer ao soltar o botão
                     if (_isJetpacking)
                     {
                         _isJetpacking = false;
@@ -506,9 +556,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (_active)
         {
-            if (other.gameObject.CompareTag("Kill"))
+            if (other.gameObject.CompareTag("Spike"))
             {
-                if(other.contacts.Any(contact => Vector2.Angle(contact.normal, Vector2.up) < 20))
+                if(other.contacts.Any(contact => Vector2.Angle(contact.normal, other.transform.up) < 20))
                     KillPlayer();
             }
         }

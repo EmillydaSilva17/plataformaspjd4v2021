@@ -50,4 +50,6 @@ public class FallingPlatformController : MonoBehaviour
         _rigidbody2D.bodyType = RigidbodyType2D.Static;
         transform.position = _initialPosition;
     }
+    
+    
 }

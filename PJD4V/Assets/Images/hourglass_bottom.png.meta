@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hourglass_bottom_0: -8358053425365110512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
